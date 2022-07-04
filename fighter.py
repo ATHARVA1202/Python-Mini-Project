@@ -1,9 +1,6 @@
-from turtle import Screen
 import pygame
 
-#from mini_project.main import Screen_height
-
-#from mini_project.main import Screen_width 
+ 
 
 class Fighter():
     def __init__ (self, x ,y):                    # x and y are coordinates (location)
@@ -15,7 +12,7 @@ class Fighter():
         
     def move(self, screen_width, screen_height, surface, target):
         SPEED = 10                       # players speed.
-        GRAVITY = 2
+        GRAVITY = 2.5
         dx = 0                           # delta variables.
         dy = 0
 
@@ -31,7 +28,7 @@ class Fighter():
             if key[pygame.K_d]:
                 dx = SPEED           
             #jump
-            if key[pygame.K_w] and self.jump == False:
+            if key[pygame.K_SPACE] and self.jump == False:
                 self.vel_y = -30                         # height of jump.
                 self.jump = True        
             #attack.
