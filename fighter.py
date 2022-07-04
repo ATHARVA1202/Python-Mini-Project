@@ -9,6 +9,8 @@ class Fighter():
         self.jump = False
         self.attacking = False
         self.attack_type = 0
+        self.health = 100       #player health
+        self.flip = False
         
     def move(self, screen_width, screen_height, surface, target):
         SPEED = 10                       # players speed.
@@ -55,21 +57,30 @@ class Fighter():
             self.jump = False
             dy = screen_height - 100 - self.rect.bottom
 
-
-
         # update player position.
         self.rect.x += dx
         self.rect.y += dy
 
+        #Flipping player facing side
+        if target.rect.centerx > self.rect.centerx:
+            self.flip = False
+        else:
+            self.flip = True
+
+        # print(self.flip)
+
+
     def attack(self, surface, target):
         self.attacking = True
-        attacking_rect = pygame.Rect(self.rect.centerx, self.rect.y, 2 * self.rect.width, self.rect.height)
+        attacking_rect = pygame.Rect(self.rect.centerx - (2 *self.rect.width * self.flip), self.rect.y, 2 * self.rect.width, self.rect.height)
         if attacking_rect.colliderect(target.rect):
-            print("hit")
-
+            target.health -=  10
+            
+#
         pygame.draw.rect(surface, (0, 255, 0), attacking_rect)
         
 
     def draw(self, surface):
         pygame.draw.rect(surface, (255, 0, 0), self.rect)           # creating rectangle on game window.
 
+ 
