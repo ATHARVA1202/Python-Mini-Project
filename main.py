@@ -37,7 +37,7 @@ while run:
     draw_background()
 
     # move fighters.
-    fighter_1.move(Screen_width)
+    fighter_1.move(Screen_width, Screen_height, screen, fighter_2)
     #fighter_2.move()
 
     # draw fighter.
@@ -54,4 +54,3 @@ while run:
 
 # exit pygame
 pygame.quit()
-
