@@ -1,4 +1,3 @@
-from re import T
 import pygame
 from fighter import Fighter
 
@@ -17,26 +16,26 @@ clock = pygame.time.Clock()
 FPS = 60
 
 # define fighter variables.
-WARRIOR_SIZE = 162
-WARRIOR_SCALE = 4
-WARRIOR_OFFSET = [72, 46]
-WARRIOR_DATA = [WARRIOR_SIZE, WARRIOR_SCALE, WARRIOR_OFFSET]
-WIZARD_SIZE = 250
-WIZARD_SCALE = 3
-WIZARD_OFFSET = [112, 97]
-WIZARD_DATA = [WIZARD_SIZE, WIZARD_SCALE, WIZARD_OFFSET]
+warrior_size = 162
+warrior_scale = 5
+warrior_offset = [72, 46]
+warrior_data = [warrior_size, warrior_scale, warrior_offset]
+wizard_size = 250
+wizard_scale = 4
+wizard_offset = [112, 97]
+wizard_data = [wizard_size, wizard_scale, wizard_offset]
 
 
 # load background image.
-background_image = pygame.image.load("mini_project/images/background/background2.jpg").convert_alpha()
+background_image = pygame.image.load("background/background2.jpg").convert_alpha()
 
 #load spritesheets.
-warrior_sheet = pygame.image.load("mini_project/images/warrior/sprites/warrior.png").convert_alpha()
-wizard_sheet = pygame.image.load("mini_project/images/wizard/sprites/wizard.png").convert_alpha()
+warrior_sheet = pygame.image.load("Spritesheet/Warrior/warrior.png").convert_alpha()
+wizard_sheet = pygame.image.load("Spritesheet/Wizard/wizard.png").convert_alpha()
 
 # define number of steps in each animation.
-WARRIOR_ANIMATION_STEPS = [10, 8, 1, 7, 7, 3, 7]
-WIZARD_ANIMATION_STEPS = [8, 8, 1, 8, 8, 3, 7]
+warrior_animation_steps = [10, 8, 1, 7, 7, 3, 7]
+wizard_animation_steps = [8, 8, 1, 8, 8, 3, 7]
 
 # function for drawing background image.
 def draw_background():
@@ -58,8 +57,8 @@ def health_bar(health, x, y):
 
 
 # creating two fighters.
-fighter_1 = Fighter(150, 400, False, WARRIOR_DATA, warrior_sheet, WARRIOR_ANIMATION_STEPS)          # (x, y)
-fighter_2 = Fighter(950, 400, True, WIZARD_DATA, wizard_sheet, WIZARD_ANIMATION_STEPS)
+fighter_1 = Fighter(150, 400, False, warrior_data, warrior_sheet, warrior_animation_steps)          # (x, y)
+fighter_2 = Fighter(950, 400,  True, wizard_data, wizard_sheet, wizard_animation_steps)
 
 # game loop
 run = True  
@@ -77,6 +76,14 @@ while run:
     # move fighters.
     fighter_1.move(Screen_width, Screen_height, screen, fighter_2)
     # fighter_2.move()
+
+
+    #update fighters
+    fighter_1.update()
+    fighter_2.update()
+ 
+
+
 
     # draw fighter.
     fighter_1.draw(screen)
