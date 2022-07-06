@@ -15,6 +15,11 @@ pygame.display.set_caption("")                                    # title for ga
 clock = pygame.time.Clock()
 FPS = 60
 
+# define game variables
+intro_count = 3
+last_count_update = pygame.time.get_ticks()
+
+
 # define fighter variables.
 warrior_size = 162
 warrior_scale = 5
@@ -69,9 +74,17 @@ while run:
     health_bar(fighter_1.health,20,25)
     health_bar(fighter_2.health,630,25)
 
-    # move fighters.
-    fighter_1.move(Screen_width, Screen_height, screen, fighter_2)
-    fighter_2.move(Screen_width, Screen_height, screen, fighter_1)
+    #update countdown
+    if intro_count <= 0:
+        # move fighters
+        fighter_1.move(Screen_width, Screen_height, screen, fighter_2)
+        fighter_2.move(Screen_width, Screen_height, screen, fighter_1)
+    else:
+        # update count timer
+        if (pygame.time.get_ticks() - last_count_update) >= 1000:
+            intro_count -= 1
+            last_count_update = pygame.time.get_ticks()
+            print(intro_count)
 
 
     #update fighters
