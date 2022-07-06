@@ -1,6 +1,9 @@
+import imp
 import pygame
+from pygame import mixer
 from fighter import Fighter
 
+mixer.init()
 pygame.init()          # initializing pygame.
 
 # create game  window
@@ -8,7 +11,7 @@ Screen_width = 1200                        # 1000,1200
 Screen_height = 800                        # 600, 800
 
 screen = pygame.display.set_mode((Screen_width,Screen_height))
-pygame.display.set_caption("Street Fighter")                                    # title for game window 
+pygame.display.set_caption("")                                    # title for game window 
 
 
 # set framerate.
@@ -26,9 +29,13 @@ wizard_scale = 4
 wizard_offset = [112, 97]
 wizard_data = [wizard_size, wizard_scale, wizard_offset]
 
+#load music and sounds
+pygame.mixer.music.load("assets/sounds/Bloodborne - Laurence the First Vicar_256k.mp3")
+pygame.mixer.music.set_volume(0.5)
+pygame.mixer.music.play(-1, 0.0, 5000)
 
 # load background image.
-background_image = pygame.image.load("background/background2.jpg").convert_alpha()
+background_image = pygame.image.load("background/background.jpg").convert_alpha()
 
 #load spritesheets.
 warrior_sheet = pygame.image.load("Spritesheet/Warrior/warrior.png").convert_alpha()
