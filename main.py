@@ -8,7 +8,7 @@ Screen_width = 1200                        # 1000,1200
 Screen_height = 800                        # 600, 800
 
 screen = pygame.display.set_mode((Screen_width,Screen_height))
-pygame.display.set_caption("")                                    # title for game window 
+pygame.display.set_caption("Street Fighter")                                    # title for game window 
 
 
 # set framerate.
