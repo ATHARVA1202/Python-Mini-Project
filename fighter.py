@@ -49,7 +49,7 @@ class Fighter():
         key = pygame.key.get_pressed()
 
         # can only perform other functions if not currently attcking.
-        if self.attacking == False:
+        if self.attacking == False and self.alive == True :
             #checks player 1 controls
             if self.player == 1:
             # movement
