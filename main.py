@@ -30,7 +30,7 @@ wizard_offset = [112, 97]
 wizard_data = [wizard_size, wizard_scale, wizard_offset]
 
 #load music and sounds
-pygame.mixer.music.load("assets/sounds/Bloodborne - Laurence the First Vicar_256k.mp3")
+pygame.mixer.music.load("assets/sounds/Bloodborne - Laurence the First Vicar with Lyrics_256k.mp3")
 pygame.mixer.music.set_volume(0.5)
 pygame.mixer.music.play(-1, 0.0, 5000)
 
