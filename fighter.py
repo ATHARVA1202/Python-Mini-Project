@@ -3,7 +3,8 @@ import pygame
  
 
 class Fighter():
-    def __init__ (self, x ,y, flip, data, sprite_sheet, animation_steps):                    # x and y are coordinates (location)
+    def __init__ (self, player, x ,y, flip, data, sprite_sheet, animation_steps):                    # x and y are coordinates (location)
+        self.player = player
         self.size = data[0]
         self.image_scale = data[1]
         self.offset = data[2]
@@ -25,8 +26,6 @@ class Fighter():
         self.alive = True
 
 
-
-
     def load_images(self, sprite_sheet, animation_steps):
         #extract images from spritesheet.
         animation_list = []
@@ -39,10 +38,8 @@ class Fighter():
         return animation_list 
             
         
-        
-        
     def move(self, screen_width, screen_height, surface, target):
-        SPEED = 10                       # players speed.
+        SPEED = 10                        # players speed.
         GRAVITY = 2.5
         dx = 0                           # delta variables.
         dy = 0
@@ -53,27 +50,52 @@ class Fighter():
 
         # can only perform other functions if not currently attcking.
         if self.attacking == False:
-
-            # movement.
-            if key[pygame.K_a]:
+            #checks player 1 controls
+            if self.player == 1:
+            # movement
+             if key[pygame.K_a]:
                 dx = -SPEED
                 self.run = True
-            if key[pygame.K_d]:
+             if key[pygame.K_d]:
                 dx = SPEED           
                 self.run = True
             #jump
-            if key[pygame.K_SPACE] and self.jump == False:
+             if key[pygame.K_SPACE] and self.jump == False:
                 self.vel_y = -30                         # height of jump.
                 self.jump = True        
             #attack.
-            if key[pygame.K_c] or key[pygame.K_v]:
+             if key[pygame.K_c] or key[pygame.K_v]:
                 self.attack(surface, target)
                 # determine which attack was used.
                 if key[pygame.K_c]:
                     self.attack_type = 1
                 if key[pygame.K_v]:
                     self.attack_type = 2
+
+            #checks player 2 controls
+            if self.player == 2:
+            # movement
+             if key[pygame.K_LEFT]:
+                dx = -SPEED
+                self.run = True
+             if key[pygame.K_RIGHT]:
+                dx = SPEED           
+                self.run = True
+            #jump
+             if key[pygame.K_UP] and self.jump == False:
+                self.vel_y = -30                         # height of jump.
+                self.jump = True        
+            #attack.
+             if key[pygame.K_KP1] or key[pygame.K_KP2]:
+                self.attack(surface, target)
+                # determine which attack was used.
+                if key[pygame.K_KP1]:
+                    self.attack_type = 1
+                if key[pygame.K_KP2]:
+                    self.attack_type = 2
         
+
+      
          
         # applying gravity.
         self.vel_y += GRAVITY
