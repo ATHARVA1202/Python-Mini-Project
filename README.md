@@ -1,5 +1,4 @@
-# Python-Mini-Project
-Street Fighter Game using Pygame 
+# 2D Fighter Game
 
 ![Screenshot 1](https://github.com/ATHARVA1202/Python-Mini-Project/blob/main/Screenshots/Picture1.jpg)
 
